@@ -1,8 +1,8 @@
 <script setup>
 import { nextTick, ref } from 'vue';
 import { Head, useForm } from '@inertiajs/inertia-vue3';
-import Card from '@/Components/Card.vue';
-import CardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
+import Logo from '@/Components/Logo.vue';
+import AuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
 import JetButton from '@/Jetstream/Button.vue';
 import JetInput from '@/Jetstream/Input.vue';
 import JetLabel from '@/Jetstream/Label.vue';
@@ -40,9 +40,9 @@ const submit = () => {
 <template>
     <Head title="Two-factor Confirmation" />
 
-    <Card>
+    <AuthenticationCard>
         <template #logo>
-            <CardLogo />
+            <Logo />
         </template>
 
         <div class="mb-4 text-sm text-slate-600">
@@ -100,5 +100,5 @@ const submit = () => {
                 </JetButton>
             </div>
         </form>
-    </Card>
+    </AuthenticationCard>
 </template>

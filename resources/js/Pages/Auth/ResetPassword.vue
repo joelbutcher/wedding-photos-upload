@@ -1,7 +1,7 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/inertia-vue3';
-import Card from '@/Components/Card.vue';
-import CardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
+import Logo from '@/Components/Logo.vue';
+import AuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
 import JetButton from '@/Jetstream/Button.vue';
 import JetInput from '@/Jetstream/Input.vue';
 import JetLabel from '@/Jetstream/Label.vue';
@@ -29,9 +29,9 @@ const submit = () => {
 <template>
     <Head title="Reset Password" />
 
-    <Card>
+    <AuthenticationCard>
         <template #logo>
-            <CardLogo />
+            <Logo />
         </template>
 
         <JetValidationErrors class="mb-4" />
@@ -79,5 +79,5 @@ const submit = () => {
                 </JetButton>
             </div>
         </form>
-    </Card>
+    </AuthenticationCard>
 </template>

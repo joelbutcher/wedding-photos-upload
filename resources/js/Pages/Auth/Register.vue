@@ -1,7 +1,7 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Logo from '@/Components/Logo.vue';
-import Card from '@/Components/Card.vue';
+import AuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
 import JetButton from '@/Jetstream/Button.vue';
 import JetInput from '@/Jetstream/Input.vue';
 import JetCheckbox from '@/Jetstream/Checkbox.vue';
@@ -26,7 +26,7 @@ const submit = () => {
 <template>
     <Head title="Register" />
 
-    <Card>
+    <AuthenticationCard>
         <template #logo>
           <Logo />
         </template>
@@ -104,5 +104,5 @@ const submit = () => {
                 </JetButton>
             </div>
         </form>
-    </Card>
+    </AuthenticationCard>
 </template>

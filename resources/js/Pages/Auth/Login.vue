@@ -1,7 +1,7 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Logo from '@/Components/Logo.vue';
-import Card from '@/Components/Card.vue';
+import Card from '@/Jetstream/AuthenticationCard.vue';
 import JetButton from '@/Jetstream/Button.vue';
 import JetInput from '@/Jetstream/Input.vue';
 import JetCheckbox from '@/Jetstream/Checkbox.vue';

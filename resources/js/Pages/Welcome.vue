@@ -1,10 +1,11 @@
 <script setup>
 import {Head, useForm} from '@inertiajs/inertia-vue3';
 import Logo from '@/Components/Logo';
-
+import Card from '@/Components/Card.vue';
 import Input from '@/Components/Input.vue';
 import Label from '@/Components/Label.vue';
 import TextArea from '@/Components/TextArea.vue';
+import JetButton from '@/Jetstream/Button.vue';
 
 
 const form = useForm({
@@ -47,8 +48,8 @@ const submit = () => {
         </div>
       </div>
 
-      <div class="mt-8">
-        <div class="max-w-lg mx-auto border-y-2 sm:border-2 border-dashed border-white p-6">
+      <div class="mt-8 flex flex-col sm:justify-center items-center">
+        <Card>
           <form @submit.prevent="submit">
             <div>
               <Label for="name" value="Name(s)"/>
@@ -96,9 +97,14 @@ const submit = () => {
                   multiple
               >
             </div>
-          </form>
 
-        </div>
+            <div class="flex items-center justify-end mt-4">
+              <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                Submit
+              </JetButton>
+            </div>
+          </form>
+        </Card>
       </div>
     </div>
   </div>
