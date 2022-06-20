@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Requests\CreateUploadRequest;
 use App\Models\Upload;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,14 +18,26 @@ class CreateUpload implements ShouldQueue
     public function __construct(
         protected UuidInterface  $uuid,
         protected string  $name,
+        protected string  $email,
         protected ?string $comment = null,
     ) { }
+
+    public static function fromRequest(UuidInterface $uuid, CreateUploadRequest $request): self
+    {
+        return new self(
+            $uuid,
+            $request->name(),
+            $request->email(),
+            $request->comment(),
+        );
+    }
 
     public function handle(): void
     {
         Upload::create([
             'uuid' => $this->uuid,
             'name' => $this->name,
+            'email' => $this->email,
             'comment' => $this->comment
         ]);
     }

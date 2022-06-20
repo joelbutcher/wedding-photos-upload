@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UploadImagesRequest extends FormRequest
+class CreateUploadRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,6 +17,7 @@ class UploadImagesRequest extends FormRequest
             'images' => ['array'],
             'images.*' => ['file', 'image'],
             'name' => ['string', 'required', 'min:3', 'max:255'],
+            'email' => ['string', 'required', 'email', 'min:3', 'max:255'],
             'comment' => ['string', 'sometimes'],
         ];
     }
@@ -29,6 +30,11 @@ class UploadImagesRequest extends FormRequest
     public function name(): string
     {
         return $this->name;
+    }
+
+    public function email(): string
+    {
+        return $this->email;
     }
 
     public function comment(): ?string

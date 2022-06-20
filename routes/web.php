@@ -20,7 +20,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('welcome');
 
-Route::post('/uploads', ImageUploadController::class)->name('uploads.post');
+Route::post('/uploads', [UploadController::class, 'store'])->name('uploads.post');
 
 Route::middleware([
     'auth:sanctum',
