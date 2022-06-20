@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
+import Card from '@/Components/Card.vue';
+import CardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
 import JetButton from '@/Jetstream/Button.vue';
 
 const props = defineProps({
@@ -21,9 +21,9 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 <template>
     <Head title="Email Verification" />
 
-    <JetAuthenticationCard>
+    <Card>
         <template #logo>
-            <JetAuthenticationCardLogo />
+            <CardLogo />
         </template>
 
         <div class="mb-4 text-sm text-slate-600">
@@ -58,5 +58,5 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                 </div>
             </div>
         </form>
-    </JetAuthenticationCard>
+    </Card>
 </template>

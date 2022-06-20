@@ -17,12 +17,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'names' => config('app.names'),
-    ]);
-});
+    return Inertia::render('Welcome');
+})->name('welcome');
 
-Route::post('/images', ImageUploadController::class)->name('images.post');
+Route::post('/uploads', ImageUploadController::class)->name('uploads.post');
 
 Route::middleware([
     'auth:sanctum',
