@@ -1,64 +1,196 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel Photos Upload Demo
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+- [Installation](#installation)
+    - [Install Homebrew](#install-homebrew)
+    - [Install PHP](#install-php)
+    - [Install Composer](#install-composer)
+    - [Install Node](#install-node)
+    - [Install Laravel Valet](#install-valet)
+    - [Install MySQL](#install-mysql)
+- [Configuration](#configuration)
+    - [Environment](#environment)
+    - [Database](#database)
+- [Development](#development)
+    - [Frontend](#frontend)
 
-## About Laravel
+<a name="installation"></a>
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This setup guide is for macOS only. For Windows, please use [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install) and [Laravel Sail](https://laravel.com/docs/sail) (Docker).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<a name="install-homebrew"></a>
+### Install Homebrew
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Homebrew is a package manager for macOS. Please follow the official install instructions here: http://brew.sh
 
-## Learning Laravel
+<a name="install-php"></a>
+### Install PHP
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Laravel runs on PHP, install the latest version using the `brew` command:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```shell
+brew install php@8.1
+```
 
-## Laravel Sponsors
+Confirm PHP is installed
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```shell
+php -v
+```
 
-### Premium Partners
+Ensure the PHP symlink is pointing to the correct version:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```shell
+brew link --force --overwrite php@8.2
+```
 
-## Contributing
+<a name="install-composer"></a>
+### Install Composer
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Composer is a modern package manager for PHP applications. You can install Composer using the `brew` command:
 
-## Code of Conduct
+```shell
+brew install composer
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Confirm composer is installed:
 
-## Security Vulnerabilities
+```shell
+composer -V
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<a name="install-node"></a>
+### Install Node
 
-## License
+To compile the projects frontend assets, you will need to have the latest version of Node and NPM installed, this can be done via the `brew` console command:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```shell
+brew install node
+```
+
+Confirm Node and NPM are installed using the following commands:
+
+```shell
+node -v
+npm -v
+```
+
+<a name="install-valet"></a>
+### Install Laravel Valet
+
+To serve the site, this project relies on [Laravel Valet](https://laravel.com/docs/valet). You can install Valet using `composer`:
+
+```shell
+composer global require laravel/valet
+```
+
+You will then need to run the `install` to ensure Laravel Valet has all the required dependencies needed to run:
+
+```shell
+valet install
+```
+
+<a name="install-mysql"></a>
+### Install MySQL
+
+This project uses a MySQL database for storing uploads, users, sessions and other data. It is recommended that you install a MySQL server using [DBngin](https://dbngin.com), you can then choose the MySQL services you wish to use by launching the desktop application. DBNgin can be installed using Homebrew and the `brew` console command:
+
+```shell
+brew install dbngin
+```
+
+<img width="724" alt="Screenshot 2022-06-22 at 19 00 32" src="https://user-images.githubusercontent.com/7163152/175105548-7e303d35-ed72-46ab-9920-fd7907eb78be.png">
+
+<a name="configuration"></a>
+## Configuration
+
+You will need to ensure the application is properly configured to serve the application locally. 
+
+
+<a name="environment"></a>
+### Environment
+
+Before we start, please copy the `.env.example` file:
+
+```shell
+cp .env.example .env
+```
+
+You will then need generate an application key (`APP_KEY`). This is used for a variety of purposes, such as encrypting session cookies and generating cache keys. This key can be generated using `artisan`:
+
+```shell
+php artisan key:generate
+```
+
+<a name="database"></a>
+### Database
+
+To create a new database, you will need a database management application tool, such as [TablePlus](https://tableplus.com) or [Sequel Ace](https://sequel-ace.com). You will then need to create a database called `wedding`. You will then need to ensure the following is configured correctly:
+
+```
+host = 127.0.0.1
+port = 3306
+databaseName = wedding
+user = root
+password = <root-password>
+```
+
+In order for Laravel to communicate with your database, you will need to update the `.env` file you copied above to use the correct variable names:
+
+
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=wedding
+DB_USERNAME=root
+DB_PASSWORD=<root-password>
+```
+
+You can test the database connection by running your migrations via the `artisan` console command:
+
+```shell
+php artisan mgirate:fresh --seed
+```
+
+This command will generate your database schema (table) and seed the application with test data.
+
+<a name="Development"></a>
+## Development
+
+Before we're ready to serve the site and view it in a browser, you need to insure we've installed all the projects dependencies.
+
+<a name="frontend"></a>
+### Frontend
+
+Frontend dependencies are installed and compiled via the `npm` console command:
+
+```shell
+npm install
+
+npm run dev
+```
+
+> **Note** You can turn on hot reloading using the `npm run hot` command
+
+<a name="backend"></a>
+### Backend
+
+Backend dependencies are installed via the `composer` console command:
+
+```shell
+composer install
+```
+
+### Serving The Site
+
+Now that we have all the projects dependencies installed, and the site is configured properly, we can serve the site via [Laravel Valet](https://laravel.com/docs/valet):
+
+
+```shell
+valet link my-site --secure
+```
+
+You should then be able to "visit" the site locally in your browser at [`https://my-site.test`](https://my-site.test)
+
+> **Note** The `--secure` option instructs Laravel Valet to link the site using TLS and issues an SSL certificate for the site, adding it to your Mac Keychain.
